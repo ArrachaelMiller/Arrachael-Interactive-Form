@@ -37,25 +37,30 @@ $('#title').on('change', function(e){
 /*T-Shirt section */
 
 $('#design').on('change', function (e) {  //can i omit the word function
-    $allColors.detach /* Detach-removes all child elements with selected elements. Even though it keeps all data and event handlers of the removed element.
-    This method is preferred to remove elements but it keeps a copy of the removed elements which we can reuse at a later time. */
+  $allColors.detach /* Detach-removes all child elements with selected elements. Even though it keeps all data and event handlers of the removed element.
+  This method is preferred to remove elements but it keeps a copy of the removed elements which we can reuse at a later time. */
 $('colors-js-puns').show();
 if($('#design').val() ==='js puns') {
-    //hide the colors tomato, steelblue, and dimgrey
-    $('#color option').each(function(){
-        if($(this).val() === 'tomato' || $(this).val() ==='steelblue' ) {
-        $(this).hide(); });
-    }} else {
-        $(this).show();
-         
+  //hide the colors tomato, steelblue, and dimgrey
+  $('#color option').each(function(){
+      if(
+        $(this).val() === "tomato" || 
+        $(this).val() === "steelblue" ||
+        $(this).val() === "dimgrey"
+      ) {
+        $(this).hide(); 
+  } else {
+    $(this).show(); // show the colors cornflowerblue, darkslategrey and gold
         //set placeholder for color menu to cornflower
-        $('option[value="cornflowerblue"]').attr('selected', true);
-        
-        if(typeof $('option[value="tomato"]').attr('selected') !==
+        $('option[value="cornflowerblue"]').attr("selected", true);
+        if(
+          typeof $('option[value="tomato"]').attr("selected") !==
         typeofundefined &&
-        $('option[value="tomato"]).removeAttr('selected'); 
+        $('option[value="tomato"]').attr("selected") !== false
+        ) { 
+        $('option[value="tomato"]').removeAttr("selected"); 
         }
-     } 
+  }  
 });
 } else if($('#design').val() === 'heart js') {
     //hide the colors cornflowerblue, darkslategrey and gold
@@ -479,10 +484,7 @@ $('.activities input').on('change', function() {
         if($(this).attr('id') === 'cc-num') { validateCreditCardNumber(); }
         else if($(this).attr('id') === 'zip') { validateZipCode(); }
         else if($(this).attr('id') === 'cvv') { validateCVV(); }
-      });
-
-    }
-})
+  });
 
 
 
