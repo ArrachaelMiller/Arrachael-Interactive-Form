@@ -13,20 +13,20 @@ $('credit-card ~div').each(function() {
 $('option[value="select_method"]').attr('disabled', true); //disable the "select pymt method"
 })
 
-???
-const $punColors = $('#color option:lt(3)'); // select all elements at an index less than index w/I the matched set
-const $heartColors = $('#color option: gt(2)');// select all elements at an index greater than index w/I the matched set
+//???
+//const $punColors = $('#color option:lt(3)'); // select all elements at an index less than index w/I the matched set
+//const $heartColors = $('#color option: gt(2)');// select all elements at an index greater than index w/I the matched set
 
 
 //should i use this 
-$otherTitle.on('change' , function() {
-    if ($('#title option:selected').text() === 'Other' ) {
-        $otherTitle.show();
-    } else {
-        $otherTitle.hide();
-    }
-});
-or 
+//$otherTitle.on('change' , function() {
+   // if ($('#title option:selected').text() === 'Other' ) {
+     //   $otherTitle.show();
+   // } else {
+      //  $otherTitle.hide();
+   // }
+//});
+
 $('#title').on('change', function(e){
     if($(e.target).val() ==='other') {
         $('#other-title').show();
@@ -43,9 +43,9 @@ $('colors-js-puns').show();
 if($('#design').val() ==='js puns') {
     //hide the colors tomato, steelblue, and dimgrey
     $('#color option').each(function(){
-        if($(this).val() === 'tomato' || $(this).val() ==='steelblue' || 
-        $(this).hide(); 
-    } else {
+        if($(this).val() === 'tomato' || $(this).val() ==='steelblue' ) {
+        $(this).hide(); });
+    }} else {
         $(this).show();
          
         //set placeholder for color menu to cornflower
