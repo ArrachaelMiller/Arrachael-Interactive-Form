@@ -2,30 +2,16 @@ let total_cost = 0;
 
 //event handlers
 $(document).ready(() => {
-$('form').attr('novalidate', true); //disable automatic form validation
-$("#nameField").focus();
-$('#other-title').hide(); //add the "Other" option to the Job Role Section
-$('#colors-js-puns').hide();//colorDiv, hide the color label and select menu when page loads
-$('#payment').val('credit card'); //default payment method to CC
-$('credit-card ~div').each(function() {
-    $(this).hide(); //hide "PayPal" and "Bitcoin" payment methods
+  $('form').attr('novalidate', true); //disable automatic form validation
+  $("#nameField").focus();
+  $('#other-title').hide(); //add the "Other" option to the Job Role Section
+  $('#colors-js-puns').hide();//colorDiv, hide the color label and select menu when page loads
+  $('#payment').val('credit card'); //default payment method to CC
+  $('credit-card ~div').each(function() {
+      $(this).hide(); //hide "PayPal" and "Bitcoin" payment methods
 });
 $('option[value="select_method"]').attr('disabled', true); //disable the "select pymt method"
 })
-
-//???
-//const $punColors = $('#color option:lt(3)'); // select all elements at an index less than index w/I the matched set
-//const $heartColors = $('#color option: gt(2)');// select all elements at an index greater than index w/I the matched set
-
-
-//should i use this 
-//$otherTitle.on('change' , function() {
-   // if ($('#title option:selected').text() === 'Other' ) {
-     //   $otherTitle.show();
-   // } else {
-      //  $otherTitle.hide();
-   // }
-//});
 
 $('#title').on('change', function(e){
     if($(e.target).val() ==='other') {
@@ -36,58 +22,32 @@ $('#title').on('change', function(e){
 });
 /*T-Shirt section */
 
-$('#design').on('change', function (e) {  //can i omit the word function
-  $allColors.detach /* Detach-removes all child elements with selected elements. Even though it keeps all data and event handlers of the removed element.
-  This method is preferred to remove elements but it keeps a copy of the removed elements which we can reuse at a later time. */
-$('colors-js-puns').show();
-if($('#design').val() ==='js puns') {
-  //hide the colors tomato, steelblue, and dimgrey
-  $('#color option').each(function(){
-      if(
-        $(this).val() === "tomato" || 
-        $(this).val() === "steelblue" ||
-        $(this).val() === "dimgrey"
-      ) {
-        $(this).hide(); 
-  } else {
-    $(this).show(); // show the colors cornflowerblue, darkslategrey and gold
-        //set placeholder for color menu to cornflower
-        $('option[value="cornflowerblue"]').attr("selected", true);
-        if(
-          typeof $('option[value="tomato"]').attr("selected") !==
-        typeofundefined &&
-        $('option[value="tomato"]').attr("selected") !== false
-        ) { 
-        $('option[value="tomato"]').removeAttr("selected"); 
-        }
-  }  
-});
-} else if($('#design').val() === 'heart js') {
-    //hide the colors cornflowerblue, darkslategrey and gold
-    $('#color option').each(function() {
-      if($(this).val() === 'cornflowerblue' ||
-        $(this).val() === 'darkslategrey' || $(this).val() === 'gold') {
-          $(this).hide();
-      } else {
-        //show the colors tomato, steelblue and dimgrey
-        $(this).show();
-        //set placeholder for color menu to tomato
-        $('option[value="tomato"]').attr('selected', true);
-        
-        if(typeof $('option[value="cornflowerblue"]').attr('selected') !==
-          typeof undefined &&
-          $('option[value="cornflowerblue"]').attr('selected') !== false) {
-            $('option[value="cornflowerblue"]').removeAttr('selected');
-        }
-      }
-    });
-  } else {
-    //if the user selects 'Select Theme' then reset the color menu
-    $('#color option').each(function() {
-      $(this).show();
-      $('#colors-js-puns').hide();
-    });
-  }
+$('#design').on('change', function (e) {  
+  let value = $("#design").val()
+    console.log(value)
+    $("option[value='Please select a T-Shirt theme']").attr('disabled','true')
+      
+    if (value === "js puns") {
+      $("option[value='tomato']").attr("selected", false);
+      $("option[value='cornflowerblue']").attr("selected", true);
+      $("option[value='cornflowerblue']").show(); 
+      $("option[value='darkslategrey']").show();
+      $("option[value='gold']").show();
+      $("option[value='tomato']").hide();
+      $("option[value='steelblue']").hide();
+      $("option[value='dimgrey']").hide();
+   } 
+   //If the user selects "Theme - I  JS" then the color menu should only display "Tomato," "Steel Blue," and "Dim Grey."
+   else if(value==="heart js") {
+       $("option[value='tomato']").attr("selected", true);
+       $("option[value='cornflowerblue']").attr("selected", false);
+       $("option[value='tomato']").show(); 
+       $("option[value='steelblue']").show();
+       $("option[value='dimgrey']").show(); 
+       $("option[value='gold']").hide();
+       $("option[value='cornflowerblue']").hide();
+       $("option[value='darkslategrey']").hide(); 
+   }
 });
 
 
